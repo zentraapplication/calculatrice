@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Calculator Bridge</title>
+    <script>
+      document.addEventListener('message', function(event) {
+        try {
+          let expression = event.data;
+          let result = eval(expression);
+          window.ReactNativeWebView.postMessage(result.toString());
+        } catch (e) {
+          window.ReactNativeWebView.postMessage("Erreur");
+        }
+      });
+    </script>
+  </head>
+  <body></body>
+</html>
