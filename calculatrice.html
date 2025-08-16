@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <title>Calculator Bridge</title>
     <script>
-      document.addEventListener('message', function(event) {
+      window.onload = function () {
+        const params = new URLSearchParams(window.location.search);
+        const expression = params.get("q");
+
         try {
-          let expression = event.data;
-          let result = eval(expression);
+          const result = eval(expression);
           window.ReactNativeWebView.postMessage(result.toString());
         } catch (e) {
           window.ReactNativeWebView.postMessage("Erreur");
         }
-      });
+      };
     </script>
   </head>
   <body></body>
